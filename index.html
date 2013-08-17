@@ -2,18 +2,19 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>有用网页配色</title>
+    <title>My Paint Tray</title>
     <style type="text/css">
     body,div,ul,li,dl,dt,dd{margin:0;padding:0;}
     .dJ{clear:both;height:0;overflow:hidden;}
     .container{width:950px;margin:20px auto 50px;}
-    .columnLeft{float:left;width:710px;}
+    .columnLeft{float:left;width:720px;}
     .columnRight{float:right;width:230px;}
-    .colorList{width:707px;}
+    .colorList{width:707px;border:1px solid #ddd;padding:1px;}
     .colorList li{width:100px;height:100px;overflow:hidden;display:block;float:left;margin:0 1px 1px 0;display:inline;position:relative;}
     .colorList span{line-height:1.5;color:#fff;text-align:center;font-size:13px;font-family:Tahoma;display:none;width:100px;bottom:5px;left:0px;position:absolute;}
-    .notes{color:#4f4f4f;margin-bottom:10px;padding:10px 15px 20px;background:#eaeaea;}
+    .notes{font-size:14px;margin-bottom:10px;padding:10px 15px 20px;background:#f6f6f6;border:1px solid #ddd;}
     .notes dt{font-weight:bold;margin-bottom:10px;}
+    .btnShow{border-radius: 2px;cursor:pointer;border:1px solid #ddd;color: #666;margin: 0 1.5em 1.2em 0;height: 32px;background: #f6f6f6;}
     </style>
 </head>
 <body>
@@ -73,20 +74,21 @@
     </div><!-- .columnLeft -->
     <div class="columnRight">
         <dl class="notes">
-            <dt>基本信息</dt>
-            <dd>名称：网页色彩收集<br/>修改时间：2012年2月21日14:50:57</dd>
+            <dt>Information</dt>
+            <dd>项&nbsp;&nbsp;目：颜料盘<br/>制作日：2012年2月21日<br/>修订日：2013年8月17日</dd>
         </dl>
         <dl class="notes">
-            <dt>功能区</dt>
-            <dd><a id="btn_a" href="javascript:void(0);">开关</a></dd>
+            <dt>Setting</dt>
+            <!--<dd><a id="btn_a" href="javascript:void(0);">开关</a></dd>-->
+            <dd><button id="btnShow" class="btnShow">打开或关闭颜色RGB值显示</button></dd>
         </dl>
     </div>
     <div class="dJ"></div>
 </div>
 <script type="text/javascript">
-var a = document.getElementById('btn_a');
+var show = document.getElementById('btnShow');
 
-function clickA() {
+function toggle() {
     b = document.getElementsByTagName('span')
     for (var i = b.length - 1; i >= 0; i--) {
         if (b[0].style.display == 'block') {
@@ -98,7 +100,7 @@ function clickA() {
 }
 
 window.onload = function() {
-    addEvent(a, "click", clickA);
+    addEvent(show, "click", toggle);
 }
 
 function addEvent(element, e, fn) {
